@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using Xunit;
 
 using FluentAssertions;
 
+using RabbitMQ.Client.Events;
 
 namespace RabbitMQAsyncEnumerableAdapter.Tests
 {
@@ -161,6 +163,46 @@ namespace RabbitMQAsyncEnumerableAdapter.Tests
 
             // Assert
             ackId.Should().Be(message.DeliveryTag);
+        }
+
+        [Fact(DisplayName = "The RabbitAdapter can provide enumerator.")]
+        [Trait("Category", "Unit")]
+        public void CanReadEmptyEnumerator()
+        {
+            // Arrange
+            var ra = new RabbitAdapter(1);
+
+            // Act
+            var enumerator = ra.GetAsyncEnumerator();
+
+            // Assert
+            enumerator.Should().NotBeNull();
+
+            enumerator.MoveNextAsync().IsCompleted.Should().BeFalse();
+        }
+
+        [Fact(DisplayName = "The RabbitAdapter can provide enumerator with values.")]
+        [Trait("Category", "Unit")]
+        public async Task CanReadEnumerator()
+        {
+            // Arrange
+            var ra = new RabbitAdapter(1);
+            var message = new BasicDeliverEventArgs() { DeliveryTag = 1 };
+
+            // Act
+            var enumerator = ra.GetAsyncEnumerator();
+            var t = enumerator.MoveNextAsync();
+
+            // Assert
+            t.IsCompleted.Should().BeFalse();
+
+            ra.ConsumeData(null, message);
+
+            await Task.Delay(1000).ConfigureAwait(false); // To wait asyc continuation from WaitToReadAsync in enumerator
+
+            t.IsCompleted.Should().BeTrue();
+
+            enumerator.Current.Should().Be(message);
         }
     }
 }
