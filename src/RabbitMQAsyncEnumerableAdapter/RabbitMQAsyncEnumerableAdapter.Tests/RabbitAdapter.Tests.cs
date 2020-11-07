@@ -198,7 +198,7 @@ namespace RabbitMQAsyncEnumerableAdapter.Tests
 
             ra.ConsumeData(null, message);
 
-            await Task.Delay(1000).ConfigureAwait(false); // To wait asyc continuation from WaitToReadAsync in enumerator
+            await Task.Delay(1000).ConfigureAwait(false); // waits continuation from WaitToReadAsync in enumerator
 
             t.IsCompleted.Should().BeTrue();
 
