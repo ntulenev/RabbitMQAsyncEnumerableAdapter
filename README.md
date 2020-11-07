@@ -1,5 +1,5 @@
 # RabbitAdapter
-### A helper adapter that helps use RabbitMq consumer as AsyncEnumerator
+### Adapter that helps use RabbitMq consumer as AsyncEnumerator
 
 ```C#
 var factory = new ConnectionFactory() { HostName = "localhost" };
