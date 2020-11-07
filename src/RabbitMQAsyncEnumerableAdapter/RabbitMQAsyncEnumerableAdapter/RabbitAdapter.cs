@@ -78,7 +78,7 @@ namespace RabbitMQAsyncEnumerableAdapter
         }
 
         /// <summary>
-        /// Creates asynci terator for queue's messages.
+        /// Creates async iterator for queue's messages.
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns>Messages async iterator.</returns>
