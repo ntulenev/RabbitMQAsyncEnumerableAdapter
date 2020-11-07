@@ -5,14 +5,20 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQAsyncEnumerableAdapter", "RabbitMQAsyncEnumerableAdapter\RabbitMQAsyncEnumerableAdapter.csproj", "{20291916-4495-4453-A76F-14958CA10850}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQAsyncEnumerableAdapter.Tests", "RabbitMQAsyncEnumerableAdapter.Tests\RabbitMQAsyncEnumerableAdapter.Tests.csproj", "{0E1342EB-8D88-4568-8713-E233762519AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{20291916-4495-4453-A76F-14958CA10850}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{20291916-4495-4453-A76F-14958CA10850}.Release|Any CPU.ActiveCfg = Release|x64
+		{20291916-4495-4453-A76F-14958CA10850}.Debug|x64.ActiveCfg = Debug|x64
+		{20291916-4495-4453-A76F-14958CA10850}.Debug|x64.Build.0 = Debug|x64
+		{20291916-4495-4453-A76F-14958CA10850}.Release|x64.ActiveCfg = Release|x64
+		{0E1342EB-8D88-4568-8713-E233762519AE}.Debug|x64.ActiveCfg = Debug|x64
+		{0E1342EB-8D88-4568-8713-E233762519AE}.Debug|x64.Build.0 = Debug|x64
+		{0E1342EB-8D88-4568-8713-E233762519AE}.Release|x64.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
