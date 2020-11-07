@@ -25,7 +25,7 @@ namespace RabbitMQAsyncEnumerableAdapter
             _acknowledge = acknowledge ?? throw new ArgumentNullException(nameof(acknowledge));
         }
 
-        public void ConsumeData(object _, BasicDeliverEventArgs e)
+        public void ConsumeData(object? _, BasicDeliverEventArgs e)
         {
             if (e is null)
                 throw new ArgumentNullException(nameof(e));
