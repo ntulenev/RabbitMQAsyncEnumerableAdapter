@@ -204,5 +204,33 @@ namespace RabbitMQAsyncEnumerableAdapter.Tests
 
             enumerator.Current.Should().Be(message);
         }
+
+        [Fact(DisplayName = "The RabbitAdapter blocks ConsumeData when buffer is full.")]
+        [Trait("Category", "Unit")]
+        public async Task CanBlockBuffer()
+        {
+            // Arrange
+            var ra = new RabbitAdapter(1);
+            var message1 = new BasicDeliverEventArgs() { DeliveryTag = 1 };
+            var message2 = new BasicDeliverEventArgs() { DeliveryTag = 1 };
+
+            // Act
+            ra.ConsumeData(null, message1);
+            var consume2Task = Task.Run(() =>
+            {
+                ra.ConsumeData(null, message2);
+            });
+
+            // Assert       
+            await Task.Delay(1000).ConfigureAwait(false); // waits consume2Task starts
+
+            consume2Task.IsCompleted.Should().BeFalse();
+
+            var _ = ra.GetAsyncEnumerator().MoveNextAsync();
+
+            await Task.Delay(1000).ConfigureAwait(false); // waits possible spinWait delay
+
+            consume2Task.IsCompleted.Should().BeTrue();
+        }
     }
 }
