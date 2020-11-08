@@ -211,8 +211,8 @@ namespace RabbitMQAsyncEnumerableAdapter.Tests
         {
             // Arrange
             var ra = new RabbitAdapter(1);
-            var message1 = new BasicDeliverEventArgs() { DeliveryTag = 1 };
-            var message2 = new BasicDeliverEventArgs() { DeliveryTag = 1 };
+            var message1 = new BasicDeliverEventArgs();
+            var message2 = new BasicDeliverEventArgs();
 
             // Act
             ra.ConsumeData(null, message1);
