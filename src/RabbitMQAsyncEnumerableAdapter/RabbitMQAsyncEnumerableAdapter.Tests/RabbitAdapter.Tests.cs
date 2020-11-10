@@ -198,7 +198,7 @@ namespace RabbitMQAsyncEnumerableAdapter.Tests
 
             ra.ConsumeData(null, message);
 
-            await Task.Delay(1000).ConfigureAwait(false); // waits continuation from WaitToReadAsync in enumerator
+            await Task.Delay(1000).ConfigureAwait(false); // Attempts to ensure that continuation from WaitToReadAsync in enumerator will be finished
 
             t.IsCompleted.Should().BeTrue();
 
@@ -222,13 +222,13 @@ namespace RabbitMQAsyncEnumerableAdapter.Tests
             });
 
             // Assert       
-            await Task.Delay(1000).ConfigureAwait(false); // waits consume2Task starts
+            await Task.Delay(1000).ConfigureAwait(false); // Attempts to ensure that consume2 Task will never finished
 
             consume2Task.IsCompleted.Should().BeFalse();
 
             var _ = ra.GetAsyncEnumerator().MoveNextAsync();
 
-            await Task.Delay(1000).ConfigureAwait(false); // waits possible spinWait delay
+            await Task.Delay(1000).ConfigureAwait(false); // Attempts to ensure that possible spinWait delay will finished
 
             consume2Task.IsCompleted.Should().BeTrue();
         }
