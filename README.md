@@ -15,7 +15,7 @@ channel.QueueDeclare(queue: "hello",
 
 var consumer = new EventingBasicConsumer(channel);
 
-// Create rabbit adapter
+// Create rabbit adapter with internal buffer (of 10 items)
 RabbitAdapter ra = new RabbitAdapter(10, messageId => channel.BasicAck(messageId, false));
 
 // Connect adapter with consumer event handler
