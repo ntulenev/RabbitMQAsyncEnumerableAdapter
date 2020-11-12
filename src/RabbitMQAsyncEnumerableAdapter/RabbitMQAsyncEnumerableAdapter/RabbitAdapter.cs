@@ -28,7 +28,7 @@ namespace RabbitMQAsyncEnumerableAdapter
         /// <summary>
         /// Creates <see cref="RabbitAdapter"/> with internal buffer of messages with size - <paramref name="bufferSize"/>. 
         /// </summary>
-        /// <param name="bufferSize">Size of immemory messages buffer.</param>
+        /// <param name="bufferSize">Size of inmemory messages buffer.</param>
         /// <exception cref="ArgumentException">Thrown when <paramref name="bufferSize"/> is less then one</exception>
         public RabbitAdapter(int bufferSize)
         {
@@ -40,7 +40,7 @@ namespace RabbitMQAsyncEnumerableAdapter
         /// <summary>
         /// Creates <see cref="RabbitAdapter"/> with internal buffer of messages with size - <paramref name="bufferSize"/> and acknowledge action.
         /// </summary>
-        /// <param name="bufferSize">Size of immemory messages buffer.</param>
+        /// <param name="bufferSize">Size of inmemory messages buffer.</param>
         /// <param name="acknowledge">Acknowledge logic.</param>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="acknowledge"/> is null</exception>
         /// <exception cref="ArgumentException">Thrown when <paramref name="bufferSize"/> is less then one</exception>
