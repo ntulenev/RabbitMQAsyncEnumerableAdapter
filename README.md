@@ -30,5 +30,5 @@ await foreach (var data in ra.WithCancellation(CancellationToken.None))
 {
     var body = data.Body.ToArray();
     var message = Encoding.UTF8.GetString(body);
-    Console.WriteLine(body);
+    Console.WriteLine(message);
 }
