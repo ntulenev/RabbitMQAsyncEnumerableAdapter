@@ -86,7 +86,7 @@ namespace RabbitMQAsyncEnumerableAdapter
         {
             while (await _channel.Reader.WaitToReadAsync(cancellationToken).ConfigureAwait(false))
             {
-                while (_channel.Reader.TryRead(out BasicDeliverEventArgs item))
+                while (_channel.Reader.TryRead(out BasicDeliverEventArgs? item))
                 {
                     yield return item;
                 }
